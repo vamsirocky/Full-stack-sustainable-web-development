@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../styles/global.css";
 import StrengthenImage from "../assets/strengthen.jpg";
+import axios from "axios";
 
 const moodOptions = [
   {
@@ -42,21 +43,51 @@ const moodOptions = [
 
 const Strengthen = () => {
   const [selectedMood, setSelectedMood] = useState(null);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  // ✅ FIXED FUNCTION NAME - Use the correct function reference
+  const handleMoodSelect = async (mood) => {
+    setSelectedMood(mood);
+  
+    try {
+      const token = localStorage.getItem("token"); // Get JWT token
+      const response = await axios.post(
+        "http://localhost:5001/strengthen",
+        {
+          user_mood: mood.number,        // Store as an integer (1-5)
+          user_mood_text: mood.description, // Store as a string
+          clicked_suggestions: mood.action, // Store the selected suggestion
+        },
+        { headers: { Authorization: `Bearer ${token}` } } // Send JWT token
+      );
+  
+      console.log("Mood Recorded Successfully:", response.data);
+      setSuccessMessage("Mood recorded successfully!");
+    } catch (error) {
+      console.error("Error recording mood:", error.response?.data || error.message);
+      setErrorMessage("Failed to record mood. Please try again.");
+    }
+  };
+  
 
   return (
     <div className="strengthen-container">
-      <h1 className="strengthen-title">Strengthen Body & Mind</h1>
+      <h1 className="strengthen-title">Strengthen Body, Mind & Spirit</h1>
       <div className="strengthen-image-container">
         <img src={StrengthenImage} alt="Strengthen Body and Mind" className="strengthen-image" />
       </div>
       <p className="strengthen-question">Select your current mood to get motivation and support:</p>
+      
       <div className="mood-scale">
         {moodOptions.map((mood) => (
-          <button key={mood.number} className={selectedMood === mood ? "selected" : ""} onClick={() => setSelectedMood(mood)}>
+          <button key={mood.number} className={selectedMood === mood ? "selected" : ""} 
+            onClick={() => handleMoodSelect(mood)}> 
             {mood.face} {mood.number}
           </button>
         ))}
       </div>
+
       {selectedMood && (
         <div className="mood-result">
           <h3>Your Mood: {selectedMood.face} - {selectedMood.description}</h3>
@@ -64,6 +95,10 @@ const Strengthen = () => {
           <a href={selectedMood.link} target="_blank" rel="noopener noreferrer" className="motivation-link">Get Support</a>
         </div>
       )}
+
+      {/* ✅ Display messages correctly */}
+      {successMessage && <p className="success-message">{successMessage}</p>}
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
     </div>
   );
 };

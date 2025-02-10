@@ -13,6 +13,25 @@ body, h1, h2, h3, p, ul, li, input, button {
     color: #333;
     line-height: 1.6;
   }
+/* Add Footer Styling to Your CSS */
+/* Footer Styling */
+/* .footer {
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+.footer-links a {
+  margin: 0 10px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+} */
 
   /* Navbar */
   nav {
@@ -265,152 +284,193 @@ body, h1, h2, h3, p, ul, li, input, button {
 
 /* Leaderboard Styling */
 .leaderboard-container {
-  max-width: 800px;
+  max-width: 1400px;
   margin: 50px auto;
   background: #fff;
-  padding: 30px;
-  border-radius: 10px;
+  padding: 50px;
+  border-radius: 15px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
   text-align: center;
 }
 
-.leaderboard-container h1 {
-  color: #007bff;
-  margin-bottom: 20px;
-  font-size: 2rem;
+.leaderboard-title {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 30px;
 }
 
 .leaderboard-list {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
-.leaderboard-list li {
+.leaderboard-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #f8f9fa;
-  padding: 15px;
-  border-radius: 8px;
-  margin-bottom: 15px;
-  border-left: 6px solid #007bff;
-  font-size: 1.2rem;
+  background: #f9f9f9;
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  font-size: 1.4rem;
 }
 
-.leaderboard-list li:nth-child(1) {
-  background: gold;
-  color: #000;
+.rank-container {
+  flex-shrink: 0;
+  background: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 50%;
   font-weight: bold;
-}
-
-.leaderboard-list li:nth-child(2) {
-  background: silver;
-  color: #000;
-}
-
-.leaderboard-list li:nth-child(3) {
-  background: #cd7f32;
-  color: #000;
-}
-
-.rank {
-  font-size: 1.5rem;
-  font-weight: bold;
-  width: 50px;
   text-align: center;
+  font-size: 1.5rem;
 }
 
 .username {
-  flex: 1;
+  flex: 2;
+  margin-left: 20px;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #333;
   text-align: left;
-  padding-left: 15px;
-  font-size: 1.2rem;
 }
 
 .progress-bar-container {
-  width: 40%;
+  flex: 3;
   background: #e9ecef;
-  border-radius: 5px;
+  border-radius: 10px;
   overflow: hidden;
-  height: 15px;
+  margin: 0 20px;
+  height: 25px;
   position: relative;
 }
 
 .progress-bar {
   height: 100%;
-  background: #007bff;
+  background: linear-gradient(90deg, #28a745, #007bff);
   transition: width 0.5s ease-in-out;
+  border-radius: 10px;
+}
+
+.score {
+  flex-shrink: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #007bff;
+  margin-left: 20px;
+}
+
+.leaderboard-item:nth-child(1) {
+  background: linear-gradient(90deg, #f8e71c, #f5d100);
+  color: #000;
+}
+
+.leaderboard-item:nth-child(2) {
+  background: linear-gradient(90deg, #d1d1d1, #c0c0c0);
+  color: #000;
+}
+
+.leaderboard-item:nth-child(3) {
+  background: linear-gradient(90deg, #cd7f32, #b87333);
+  color: #000;
 }
 
 @media (max-width: 900px) {
   .leaderboard-container {
-    width: 95%;
+    padding: 20px;
   }
-  .leaderboard-list li {
+
+  .leaderboard-item {
     flex-direction: column;
     text-align: center;
   }
+
   .progress-bar-container {
-    width: 80%;
-    margin-top: 10px;
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .username,
+  .score {
+    margin: 5px 0;
   }
 }
+
+
+
+
 /* src/styles/global.css */
 
 /* Contact Us Page Styling */
 .contact-container {
-  max-width: 600px;
+  max-width: 800px;
   margin: 50px auto;
   background: #fff;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 50px;
+  border-radius: 15px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
   text-align: center;
+  position: relative;
+  top: 20px;
 }
 
 .contact-container h1 {
-  color: #007bff;
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.contact-container p {
+  font-size: 1.2rem;
+  color: #666;
   margin-bottom: 20px;
-  font-size: 2rem;
 }
 
 .contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
 .contact-form label {
-  font-size: 1.1rem;
-  font-weight: bold;
-  text-align: left;
+  display: none;
 }
 
 .contact-form input,
 .contact-form textarea {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
   font-size: 1rem;
+  background: #f9f9f9;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #bbb;
 }
 
 .contact-form textarea {
-  resize: vertical;
-  height: 100px;
+  grid-column: span 2;
+  resize: none;
+  height: 120px;
 }
 
 .contact-form button {
-  width: 100%;
-  padding: 12px;
+  grid-column: span 2;
+  padding: 15px;
   background-color: #007bff;
-  color: #fff;
+  color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
 }
 
 .contact-form button:hover {
@@ -418,10 +478,19 @@ body, h1, h2, h3, p, ul, li, input, button {
 }
 
 @media (max-width: 768px) {
-  .contact-container {
-    width: 90%;
+  .contact-form {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form textarea {
+    grid-column: span 1;
+  }
+
+  .contact-form button {
+    grid-column: span 1;
   }
 }
+
 /* src/styles/global.css */
 
 /* Logo Styling */
@@ -657,83 +726,122 @@ nav ul li .dropdown li a:hover {
   object-fit: cover;
 }
 /* User Analytics Page Styling */
+
+/* ✅ General Container */
 .user-analytics-container {
-  max-width: 1100px;
-  margin: 50px auto;
-  text-align: center;
-  background-color: #fff;
-  padding: 50px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  font-family: "Arial", sans-serif;
+  background-color: #eef2f7;
 }
 
+/* ✅ Dashboard Title */
 .user-analytics-title {
-  font-size: 2.5rem;
-  color: #333;
-  margin-bottom: 20px;
-}
-
-.user-analytics-image-container {
-  display: flex;
-  justify-content: center;
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
   margin-bottom: 30px;
+  color: #007bff;
 }
-
-.user-analytics-image {
-  width: 90%;
-  max-width: 1000px;
-  height: 300px;
-  border-radius: 10px;
-  object-fit: cover;
-}
-
-.user-analytics-content {
-  font-size: 1.2rem;
-  color: #333;
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-.user-analytics-buttons {
+.analytics-card.mood-section {
+  height: 100%; /* Forces it to grow dynamically */
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  margin-bottom: 20px;
+  flex-direction: column;
+  justify-content: flex-start; /* Aligns content properly */
+}
+/* ✅ Main Grid Layout */
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Dynamic columns */
+  gap: 20px;
+  align-items: stretch; /* Ensures equal height */
+}
+/* ✅ Individual Cards */
+/* ✅ Makes all cards equal height */
+.analytics-card {
+  background: #96ebf085;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  border: 1px solid #ddd;
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  height: auto; /* Ensures auto height */
 }
 
-.user-analytics-buttons button {
-  background: #007bff;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.3s ease;
+.analytics-card:hover {
+  transform: scale(1.02);
 }
 
-.user-analytics-buttons button:hover {
-  background: #0056b3;
+/* ✅ Section Titles */
+.analytics-card h2 {
+  font-size: 20px;
+  color: #222;
+  margin-bottom: 15px;
+  border-bottom: 3px solid #007bff;
+  padding-bottom: 8px;
 }
 
-.progress-bar {
-  width: 80%;
-  height: 20px;
-  background: #e0e0e0;
-  border-radius: 10px;
-  margin: 20px auto;
-  position: relative;
+/* ✅ List Styling */
+/* ✅ Ensure list inside cards expands properly */
+.analytics-card ul {
+  list-style-type: none;
+  padding: 0;
+  flex-grow: 1; /* Allows list to expand inside card */
 }
 
-.progress-bar::after {
-  content: "";
-  display: block;
-  width: 50%;
-  height: 100%;
-  background: #28a745;
-  border-radius: 10px;
+.analytics-card li {
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+  font-size: 16px;
 }
+
+.analytics-card li:last-child {
+  border-bottom: none;
+}
+
+/* ✅ Full Width Sections */
+/* ✅ Full Width Sections */
+.full-width {
+  grid-column: span 2; /* Allows cards to span full width when needed */
+}
+/* ✅ Mood & Recycling in Same Row */
+.mood-recycling-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* ✅ Mood & Recycling Section */
+.mood-section, .recycling-section {
+  background: #d9f9d9;
+  padding: 15px;
+  border-radius: 6px;
+}
+
+/* ✅ Responsive Design */
+@media (max-width: 1024px) {
+  .analytics-grid {
+    grid-template-columns: repeat(1, 1fr); /* Stack cards in a single column */
+  }
+  .mood-recycling-container {
+    grid-template-columns: 1fr; /* Stack mood & recycling */
+  }
+}
+
+@media (max-width: 768px) {
+  .analytics-grid {
+    grid-template-columns: 1fr; /* Stack all elements in a single column */
+  }
+
+  .mood-recycling-container {
+    grid-template-columns: 1fr; /* Stack mood & recycling */
+  }
+}
+
+
 /* Leaderboard Page Styling */
 .leaderboard-container {
   max-width: 1100px;
@@ -768,6 +876,7 @@ nav ul li .dropdown li a:hover {
 .leaderboard-list {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .leaderboard-item {
@@ -780,6 +889,11 @@ nav ul li .dropdown li a:hover {
   margin-bottom: 15px;
   border-left: 6px solid #007bff;
   font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.leaderboard-item:hover {
+  transform: scale(1.02);
 }
 
 .rank {
@@ -807,9 +921,34 @@ nav ul li .dropdown li a:hover {
 
 .progress-bar {
   height: 100%;
-  background: #007bff;
+  background: linear-gradient(90deg, #007bff, #0056b3);
+  border-radius: 5px;
   transition: width 0.5s ease-in-out;
 }
+
+/* Additional Spacing to Avoid Overlap with Footer */
+.leaderboard-container {
+  margin-bottom: 100px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .leaderboard-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .progress-bar-container {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .rank {
+    width: auto;
+    text-align: left;
+  }
+}
+
 
 /* Services Page Styling */
 .services-container {
@@ -1097,6 +1236,14 @@ input[type="number"] {
   color: #333;
   margin-top: 20px;
 }
+.thank-you-message {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+  color: #007bff;
+  font-weight: bold;
+}
+
 /* Strengthen Body & Mind Page Styling */
 .strengthen-container {
   max-width: 800px;
@@ -1266,3 +1413,131 @@ input[type="number"] {
   line-height: 1.6;
   margin-bottom: 20px;
 }
+/* Ensure content stretches to push the footer down */
+.content-container {
+  min-height: calc(100vh - 120px); /* Adjust based on navbar and footer height */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Footer Styling */
+/* CSS */
+/* CSS */
+.footer {
+  width: 100%;
+  padding: 10px 20px;
+  background-color:rgb(39, 40, 41);
+  color: #fff;
+  font-size: 0.9rem;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-links {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.footer-social {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+}
+/* .leaderboard-container {
+  margin: 50px auto;
+  max-width: 600px;
+  text-align: center;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+} */
+/* .contact-container {
+  margin: 50px auto;
+  max-width: 600px;
+  text-align: center;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+} */
+.progress-container {
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 25px;
+  background: #e0e0e0;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4CAF50 0%, #2196F3 100%);
+  text-align: center;
+  line-height: 25px;
+  color: white;
+  font-weight: bold;
+  transition: width 0.5s ease-in-out;
+}
+
+/* Leaderboard Styles */
+.leaderboard-container {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+.leaderboard-list {
+  list-style: none;
+  padding: 0;
+}
+
+.leaderboard-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.rank-container {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.username {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.progress-bar-container {
+  flex: 1;
+  margin: 0 10px;
+  background: #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 10px;
+  background: #4CAF50;
+}
+/* Payment Card Css  */

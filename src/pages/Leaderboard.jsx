@@ -1,35 +1,47 @@
-import React from "react";
-import "../styles/global.css";
-// import LeaderboardImage from "../assets/leaderboard.jpg";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const Leaderboard = () => {
-  const topContributors = [
-    { rank: 1, username: "User1", progress: 80 },
-    { rank: 2, username: "User2", progress: 75 },
-    { rank: 3, username: "User3", progress: 70 },
-    { rank: 4, username: "User4", progress: 65 },
-    { rank: 5, username: "User5", progress: 60 },
-  ];
+  const [leaders, setLeaders] = useState([]);
+
+  useEffect(() => {
+    const fetchLeaders = async () => {
+      try {
+        const response = await axios.get("http://localhost:5001/leaderboard/top5");
+        setLeaders(response.data);
+      } catch (err) {
+        console.error("Error fetching leaderboard:", err);
+      }
+    };
+  
+    fetchLeaders();
+  }, []);
+  
 
   return (
     <div className="leaderboard-container">
-      <h1 className="leaderboard-title">Leaderboard</h1>
-      <div className="leaderboard-image-container">
-        {/* <img src={LeaderboardImage} alt="Leaderboard Overview" className="leaderboard-image" /> */}
-      </div>
-      <ul className="leaderboard-list">
-        {topContributors.map((user) => (
-          <li key={user.rank} className="leaderboard-item">
-            <span className="rank">#{user.rank}</span>
-            <span className="username">{user.username}</span>
-            <div className="progress-bar-container">
-              <div className="progress-bar" style={{ width: `${user.progress}%` }}>
-                {user.progress}%
+      <h1 className="leaderboard-title">🏆 Leaderboard 🏆</h1>
+      {leaders.length === 0 ? (
+        <p className="no-data-message">No data available. Start participating to appear on the leaderboard!</p>
+      ) : (
+        <ul className="leaderboard-list">
+          {leaders.map((user, index) => (
+            <li key={index} className="leaderboard-item">
+              <div className="rank-container">
+                <span className="rank">#{index + 1}</span>
               </div>
-            </div>
-          </li>
-        ))}
-      </ul>
+              <span className="username">{user.name}</span>
+              <div className="progress-bar-container">
+                <div className="progress-bar" style={{ width: `${user.normalized_score}%` }}></div>
+              </div>
+              <span className="score">
+  {isNaN(user.normalized_score) ? "0%" : `${Math.round(user.normalized_score)}%`}
+</span>
+
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
